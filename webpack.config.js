@@ -1,43 +1,61 @@
-const HtmlWebPackPlugin = require( 'html-webpack-plugin' );
-const path = require( 'path' );
+const path = require('path');
+const autoprefixer = require('autoprefixer');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
-   context: __dirname,
-   entry: './src/index.js',
-   output: {
-      path: path.resolve( __dirname, 'build' ),
-      filename: './dist/main.js',
-      publicPath: '/',
-   },
-   devServer: {
-      historyApiFallback: true
-   },
-   resolve: {
-      extensions: ['.js', '.jsx'],
-      modules: ['node_modules']
-   },
-   module: {
-      rules: [
-         {
-            test: /\.(js|jsx)$/,
-            exclude: /node_modules/,
-            use: {
-              loader: "babel-loader"
+    entry: './src/index.js',
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'bundle.js',
+        chunkFilename: '[id].js',
+        publicPath: ''
+    },
+    resolve: {
+        extensions: ['.js', '.jsx']
+    },
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/
+            },
+            {
+                test: /\.css$/,
+                exclude: /node_modules/,
+                use: [
+                    { loader: 'style-loader' },
+                    { 
+                        loader: 'css-loader',
+                        options: {
+                            modules: {
+                                localIdentName: "fsu_[local]_[hash:base64:5]",
+                            },                                                      
+                            sourceMap: true
+                        }
+                     },
+                     { 
+                         loader: 'postcss-loader',
+                         options: {
+                             ident: 'postcss',
+                             plugins: () => [
+                                 autoprefixer({})
+                             ]
+                         }
+                      }
+                ]
+            },
+            {
+                test: /\.(png|jpe?g|gif)$/,
+                loader: 'url-loader?limit=10000&name=img/[name].[ext]'
             }
-         },
-         {
-            test: /\.css$/,
-            use: ['style-loader', 'css-loader'],
-         },
-         {
-            test: /\.(png|j?g|svg|gif)?$/,
-            use: 'file-loader'
-         }
-      ]
-   },
-   plugins: [
-      new HtmlWebPackPlugin({
-         template: path.resolve( __dirname, 'public/index.html' ),
-         filename: 'index.html'
-      })
-   ]
+        ]
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: __dirname + '/public/index.html',
+            filename: 'index.html',
+            inject: 'body'
+        })
+    ]
 };

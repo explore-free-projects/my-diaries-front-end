@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styles from './Button.module.css'
 
 class Button extends Component {
   constructor(props) {
@@ -7,7 +8,7 @@ class Button extends Component {
   }
   render() { 
     return ( 
-      <button>
+      <button className={styles.error}>
         Button
       </button>
      );
