@@ -29,7 +29,7 @@ module.exports = {
                         loader: 'css-loader',
                         options: {
                             modules: {
-                                localIdentName: "fsu_[local]_[hash:base64:5]",
+                                localIdentName: "dwa_[name]_[local]",
                             },                                                      
                             sourceMap: true
                         }
