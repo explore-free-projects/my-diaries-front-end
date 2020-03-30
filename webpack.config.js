@@ -6,7 +6,7 @@ module.exports = {
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'build'),
-        filename: './build/main.js',
+        filename: 'main.js',
         chunkFilename: '[id].js',
         publicPath: ''
     },
@@ -24,14 +24,14 @@ module.exports = {
                 test: /\.css$/,
                 exclude: /node_modules/,
                 use: [
-                    { loader: 'style-loader',options: { injectType: 'singletonStyleTag' }},
+                    { loader: 'style-loader',options: { injectType: 'singletonStyleTag' } },
                     { 
                         loader: 'css-loader',
                         options: {
-                            localsConvention: 'dashes',
                             modules: {
-                                localIdentName: "dwa_[name]__[local]",
-                            }            
+                                localIdentName: "fsu_[local]_[hash:base64:5]",
+                            },                                                      
+                            sourceMap: true
                         }
                      },
                      { 
@@ -44,6 +44,10 @@ module.exports = {
                          }
                       }
                 ]
+            },
+            {
+                test: /\.svg$/,
+                loader: 'svg-inline-loader'
             },
             {
                 test: /\.(png|jpe?g|gif)$/,
