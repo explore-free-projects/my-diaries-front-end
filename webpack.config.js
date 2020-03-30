@@ -5,9 +5,8 @@ module.exports = {
    entry: './src/index.js',
    output: {
       path: path.resolve( __dirname, 'dist' ),
-      filename: "[name].bundle.js",
-		chunkFilename: "[id].bundle.js",
-      publicPath: 'public',
+      filename: 'main.js',
+      publicPath: '/',
    },
    devServer: {
       historyApiFallback: true
