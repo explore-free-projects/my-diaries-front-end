@@ -44,14 +44,6 @@ module.exports = {
                          }
                       }
                 ]
-            },
-            {
-                test: /\.svg$/,
-                loader: 'svg-inline-loader'
-            },
-            {
-                test: /\.(png|jpe?g|gif)$/,
-                loader: 'url-loader?limit=10000&name=img/[name].[ext]'
             }
         ]
     },
