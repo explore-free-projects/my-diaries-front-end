@@ -4,6 +4,7 @@ import styles from './button.css'
 class Button extends Component {
   constructor(props) {
     super(props);
+    var a;
     this.state = {  }
   }
   render() { 
