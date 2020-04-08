@@ -1,6 +1,6 @@
 import React from 'react';
-import style from './App.css';
-import { Button } from 'components'
+import { Button, Button1 } from 'components'
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -25,19 +25,17 @@ function App() {
           </li>
         </ul>
       </nav>
-
-      {/* A <Switch> looks through its children <Route>s and
-          renders the first one that matches the current URL. */}
       <Switch>
         <Route path="/about">
           <About />
-          <Button/>
         </Route>
         <Route path="/users">
           <Users />
         </Route>
         <Route path="/">
           <Home />
+          <Button/>
+          <Button1/>
         </Route>
       </Switch>
     </div>

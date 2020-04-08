@@ -33,8 +33,7 @@ module.exports = {
                         options: {
                             modules: {
                                 localIdentName: "dwa_[name]_[local]",
-                            },														
-                            sourceMap: true
+                            }			
                         }
                      },
                      { 

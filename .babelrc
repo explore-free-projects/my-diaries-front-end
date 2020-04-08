@@ -16,5 +16,32 @@
  } ],
  "@babel/preset-react"
   ],
-  "plugins": [ "@babel/plugin-proposal-class-properties" ]
+
+  "env": {
+    "production": {
+      "plugins": [
+        [ "@babel/plugin-proposal-class-properties" ],
+        [
+          "babel-plugin-styled-components",
+          {
+            "displayName": false,
+            "fileName": false
+          }
+        ]
+      ]
+    },
+    "development": {
+      "plugins": [
+        [ "@babel/plugin-proposal-class-properties" ],
+        [
+          "babel-plugin-styled-components",
+          {
+            "displayName": true,
+            "fileName": false
+          }
+        ]
+      ]
+    }
+  },
+   
 }
