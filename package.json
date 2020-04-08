@@ -37,6 +37,7 @@
     "autoprefixer": "^9.7.5",
     "babel-loader": "^8.1.0",
     "babel-plugin-styled-components": "^1.10.7",
+    "babel-plugin-transform-node-env-inline": "^0.4.3",
     "classnames": "^2.2.6",
     "css-loader": "^3.4.2",
     "file-loader": "^6.0.0",
