@@ -12,8 +12,8 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "start": "webpack-dev-server --open --hot --mode development && BABEL_ENV=development",
-    "build": "webpack --mode production && BABEL_ENV=production "
+    "start": "webpack-dev-server --open --hot --mode development",
+    "build": "webpack --mode production"
   },
   "eslintConfig": {
     "extends": "react-app"
