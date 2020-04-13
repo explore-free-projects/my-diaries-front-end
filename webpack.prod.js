@@ -5,11 +5,13 @@ module.exports = merge(common, {
   mode: 'production',
   devtool: 'source-map',
 
-  rules: [
-    {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/
-    }
-  ]  
+  module: {
+    rules: [
+        {
+            test: /\.js$/,
+            loader: 'babel-loader',
+            exclude: /node_modules/
+        }
+    ]
+  }
 });
