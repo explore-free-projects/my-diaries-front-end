@@ -1,15 +1,15 @@
 import React from 'react';
-import { Button1 } from 'components'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
+import history from "./history.js";
 
 function App() {
   return (
-    <Router>
+    <Router history={history}>
     <div>
       <ul>
         <li>
