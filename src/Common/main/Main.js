@@ -5,7 +5,11 @@ import styled from 'styled-components';
 const StyledMain = styled.main `
   position: absolute;
   left: 280px;
-  overflow: auto
+  overflow: auto;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 25px;
 `;
 
 class Main extends Component {
