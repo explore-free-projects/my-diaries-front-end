@@ -8,7 +8,7 @@ module.exports = {
         path: path.resolve(__dirname, 'build'),
         filename: 'bundle.js',
         chunkFilename: '[id].js',
-        publicPath: ''
+        publicPath: '/'
     },
     resolve: {
         extensions: ['.js', '.jsx'],
@@ -52,6 +52,9 @@ module.exports = {
                 loader: 'url-loader?limit=10000&name=img/[name].[ext]'
             }
         ]
+    },
+    devServer: {
+        historyApiFallback: true,
     },
     plugins: [
         new HtmlWebpackPlugin({

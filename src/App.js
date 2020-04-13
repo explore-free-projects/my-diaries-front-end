@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button1 } from 'components'
-
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,29 +11,36 @@ function App() {
   return (
     <Router>
     <div>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/users">Users</Link>
-          </li>
-        </ul>
-      </nav>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/about">About</Link>
+        </li>
+        <li>
+          <Link to="/dashboard">Dashboard</Link>
+        </li>
+      </ul>
+
+      <hr />
+
+      {/*
+        A <Switch> looks through all its children <Route>
+        elements and renders the first one whose path
+        matches the current URL. Use a <Switch> any time
+        you have multiple routes, but you want only one
+        of them to render at a time
+      */}
       <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
         <Route path="/about">
           <About />
         </Route>
-        <Route path="/users">
-          <Users />
-        </Route>
-        <Route path="/">
-          <Home />
-          <Button1/>
+        <Route path="/dashboard">
+          <Dashboard />
         </Route>
       </Switch>
     </div>
@@ -43,15 +49,27 @@ function App() {
 }
 
 function Home() {
-  return <h2>Home</h2>;
+  return (
+    <div>
+      <h2>Home</h2>
+    </div>
+  );
 }
 
 function About() {
-  return <h2>About</h2>;
+  return (
+    <div>
+      <h2>About</h2>
+    </div>
+  );
 }
 
-function Users() {
-  return <h2>Users</h2>;
+function Dashboard() {
+  return (
+    <div>
+      <h2>Dashboard</h2>
+    </div>
+  );
 }
 
 export default App;
