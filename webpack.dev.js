@@ -1,5 +1,4 @@
 const path = require('path');
-const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -35,26 +34,7 @@ module.exports = {
             {
                 test: /\.css$/,
                 exclude: /node_modules/,
-                use: [
-                    { loader: 'style-loader' },
-                    { 
-                        loader: 'css-loader',
-                        options: {
-                            modules: {
-                                localIdentName: "dwa_[name]_[local]",
-                            }			
-                        }
-                     },
-                     { 
-                         loader: 'postcss-loader',
-                         options: {
-                             ident: 'postcss',
-                             plugins: () => [
-                                 autoprefixer({})
-                             ]
-                         }
-                      }
-                ]
+                loader: 'css-loader'
             },
             {
                 test: /\.(png|jpe?g|gif|svg)$/,

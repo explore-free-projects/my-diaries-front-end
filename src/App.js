@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Button1 } from 'components'
+import { Button1 } from 'components'
 
 import {
   BrowserRouter as Router,
@@ -34,7 +34,6 @@ function App() {
         </Route>
         <Route path="/">
           <Home />
-          <Button/>
           <Button1/>
         </Route>
       </Switch>
