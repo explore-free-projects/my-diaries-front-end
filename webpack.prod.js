@@ -8,7 +8,7 @@ module.exports = {
         path: path.resolve(__dirname, 'build'),
         filename: 'bundle.js',
         chunkFilename: '[id].js',
-        publicPath: '/'
+        publicPath: '/build/'
     },
     resolve: {
         extensions: ['.js', '.jsx'],
