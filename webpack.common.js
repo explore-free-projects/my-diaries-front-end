@@ -9,6 +9,9 @@ module.exports = {
         chunkFilename: '[id].js',
         publicPath: '/'
     },
+    devServer: {
+      historyApiFallback: true
+    },
     resolve: {
         extensions: ['.js', '.jsx'],
         alias: {
