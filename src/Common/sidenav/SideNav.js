@@ -8,11 +8,13 @@ const StyledNav = styled.aside `
   top: 0;
   bottom: 0;
   width: 280px;
+  background-color: ${props => props.theme.bgColor};
 `;
 
 const StyledLogo = styled.h1 `
   padding: 0px 25px;
-  font-size: 26px;
+  font-size: 32px;
+  color: #616161;
 `;
 
 const StyledNavUl = styled.ul `
@@ -35,8 +37,7 @@ const StyledNavLink = styled(Link) `
   &:hover {
     color: #4ba789;
   }
-`;  
-
+`;
 
 class SideNav extends Component {
   constructor(props) {
@@ -49,13 +50,13 @@ class SideNav extends Component {
         <StyledLogo>Noteworthy</StyledLogo>
         <StyledNavUl>
           <StyledNavList>
-            <StyledNavLink to="/">Home</StyledNavLink>
+            <StyledNavLink to="/">About</StyledNavLink>
           </StyledNavList>
           <StyledNavList>
-            <StyledNavLink to="/about">About</StyledNavLink>
+            <StyledNavLink to="/tags">Tags</StyledNavLink>
           </StyledNavList>
           <StyledNavList>
-            <StyledNavLink to="/dashboard">Dashboard</StyledNavLink>
+            <StyledNavLink to="/archives">Archives</StyledNavLink>
           </StyledNavList>
         </StyledNavUl>
       </StyledNav>

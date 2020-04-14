@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import styled from 'styled-components';
+import { BlogsList } from "components";
+import { Blogs } from 'Mocks'
 
 const StyledMain = styled.main `
   position: absolute;
@@ -9,7 +11,7 @@ const StyledMain = styled.main `
   right: 0;
   top: 0;
   bottom: 0;
-  padding: 25px;
+  padding: 34px 25px;
 `;
 
 class Main extends Component {
@@ -21,14 +23,15 @@ class Main extends Component {
     return (
       <StyledMain>
         <Switch>
-          <Route exact path="/">
-            Home
+          <Route path="/" exact>
+            <BlogsList 
+              data={Blogs}/>
           </Route>
-          <Route path="/about">
-            About
+          <Route path="/tags">
+            Tags
           </Route>
-          <Route path="/dashboard">
-            Dashboard
+          <Route path="/archives">
+            Archives
           </Route>
         </Switch>
       </StyledMain>

@@ -1,23 +1,35 @@
-import React from 'react';
-import { BrowserRouter as Router } from "react-router-dom";
+import React, { useState } from 'react';
+import { Router } from "react-router-dom";
+import { ThemeProvider } from 'styled-components'
 import history from "./history.js";
 import { Main, SideNav } from './Common/';
-import { createGlobalStyle } from 'styled-components'
+import { themes } from './utils/theme';
+import { GlobalStyle } from './utils/global';
 
-const GlobalStyle = createGlobalStyle`
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
-  }
-`;
+const lightTheme = () => ({
+  ...themes['common'],
+  ...themes['light'],
+})
+
+const darkTheme = () => ({
+  ...themes['common'],
+  ...themes['dark'],
+})
 
 function App() {
+  const [theme, setTheme] = useState(lightTheme())
+  const setDarkTheme = () => setTheme(darkTheme())
+  const setLightTheme = () => setTheme(lightTheme())
+
   return (
     <Router history={history}>
-      <GlobalStyle />
-      <SideNav/>
-      <Main/>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <SideNav/>
+        {/* <button onClick={setLightTheme}>Make it light</button>
+                <button onClick={setDarkTheme}>Make it dark</button> */}
+        <Main/>
+      </ThemeProvider>
     </Router>
   );
 }

@@ -15,7 +15,9 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx'],
         alias: {
-            components: path.resolve(__dirname, './src/Components')
+            components: path.resolve(__dirname, './src/Components'),
+            Common: path.resolve(__dirname, './src/Common'),
+            Mocks: path.resolve(__dirname, './src/Mocks')
         }
     },
     module: {
