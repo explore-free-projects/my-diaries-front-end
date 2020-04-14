@@ -7,12 +7,12 @@ import { GlobalStyle, Themes, History } from 'utils';
 const lightTheme = () => ({
   ...Themes['common'],
   ...Themes['light'],
-})
+});
 
 const darkTheme = () => ({
   ...Themes['common'],
   ...Themes['dark'],
-})
+});
 
 const ThemeToggle = styled.div `
   position: fixed;

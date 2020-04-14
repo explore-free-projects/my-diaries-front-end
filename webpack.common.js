@@ -6,11 +6,16 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'build'),
         filename: 'bundle.js',
-        chunkFilename: '[id].js',
+        chunkFilename: '[name].bundle.js',
         publicPath: '/'
     },
     devServer: {
       historyApiFallback: true
+    },
+    optimization: {
+        splitChunks: {
+          chunks: 'all',
+        },
     },
     resolve: {
         extensions: ['.js', '.jsx'],
