@@ -1,19 +1,17 @@
 import React, { useState } from 'react';
 import { Router } from "react-router-dom";
 import styled, { ThemeProvider } from 'styled-components'
-import history from "./history.js";
-import { Main, SideNav } from './Common/';
-import { themes } from './utils/theme';
-import { GlobalStyle } from './utils/global';
+import { Main, SideNav } from 'common';
+import { GlobalStyle, Themes, History } from 'utils';
 
 const lightTheme = () => ({
-  ...themes['common'],
-  ...themes['light'],
+  ...Themes['common'],
+  ...Themes['light'],
 })
 
 const darkTheme = () => ({
-  ...themes['common'],
-  ...themes['dark'],
+  ...Themes['common'],
+  ...Themes['dark'],
 })
 
 const ThemeToggle = styled.div `
@@ -48,7 +46,7 @@ function App() {
   const setLightTheme = () => setTheme(lightTheme())
 
   return (
-    <Router history={history}>
+    <Router history={History}>
       <ThemeToggle>
         <ThemeToggleBtn 
           onClick={setLightTheme}

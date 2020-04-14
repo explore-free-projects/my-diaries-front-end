@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import { BlogsList } from "components";
-import { Blogs } from 'Mocks'
+import { Blogs } from 'mocks';
 
 const StyledMain = styled.main `
   position: absolute;

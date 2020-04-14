@@ -1,4 +1,4 @@
-export const themes = {
+const themes = {
   common: {
     fontFamily:
       "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
@@ -21,4 +21,6 @@ export const themes = {
     categoryColor: '#CBD2D9',
     categoryHoverColor: '#9AA5B1',
   },
-}
+};
+
+export default themes;
