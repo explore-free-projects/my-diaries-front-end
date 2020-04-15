@@ -23,11 +23,12 @@ const ThemeToggle = styled.div `
 
 
 const ThemeToggleBtn = styled.button `
-  padding: 6px 9px;
-  border: 1px solid #fff;
+  padding: 6px 10px;
+  border: 1px solid #8bc5b2;
   font-size: 12px;
   outline: 0;
-  background-color: ${props => (props.currentTheme === true) ? "#333" : "#ddd"};
+  font-weight: 500;
+  background-color: ${props => (props.currentTheme === true) ? "#8bc5b2" : "#ffffff"};
 
   &:first-child {
     border-top-left-radius: 4px;

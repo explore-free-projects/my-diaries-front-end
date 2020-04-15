@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const StyledBlogWrapper = styled.section `
   max-width: 680px;
-  border-bottom: 1px solid #ededed;
+  border-bottom: 1px solid ${props => props.theme.borderColor};
   margin-bottom: 20px;
   padding-bottom: 20px;
 
@@ -16,11 +16,11 @@ const StyledBlogWrapper = styled.section `
 const StyledBlogTitle = styled.h1 `
   font-size: 28px;
   margin: 0;
-  color: #606060;
+  color: ${props => props.theme.textPrimary};
 `;
 
 const StyledBlogContent = styled.p `
-  color: #797979;
+  color: ${props => props.theme.textSecondary};
   font-size: 16px;
   line-height: 23px;
   margin-top: 20px;
@@ -29,7 +29,7 @@ const StyledBlogContent = styled.p `
 
 const StyledBlogSubtitle = styled.span `
   font-size: 14px;
-  color: #c1c1c1;
+  color: ${props => props.theme.textMute};
 `;
 
 function BlogsList(props) {   

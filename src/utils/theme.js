@@ -6,20 +6,24 @@ const themes = {
   light: {
     type: 'light',
     bgColor: 'white',
-    color: '#3E4C59',
-    searchBgColor: '#E4E7EB',
-    boxShadow: '0.8rem 0.8rem 1.5rem gray',
-    categoryColor: '#999',
-    categoryHoverColor: '#333',
+    borderColor: "#ededed",
+    textPrimary: '#606060',
+    textSecondary: '#797979',
+    textMute: '#c1c1c1',
+    textBrand: '#616161',
+    link: '#77bca6',
+    linkHover: '#4ba789'
   },
   dark: {
     type: 'dark',
-    bgColor: '#1F2933',
-    color: '#E4E7EB',
-    searchBgColor: '#E4E7EB',
-    boxShadow: '0.4rem 0.4rem 1.5rem #111111',
-    categoryColor: '#CBD2D9',
-    categoryHoverColor: '#9AA5B1',
+    bgColor: '#111111',
+    borderColor: "#232222",
+    textPrimary: '#e6e6e6',
+    textSecondary: '#b7b7b7',
+    textMute: '#777777',
+    textBrand: '#f9f9f9',
+    link: '#cecbcb',
+    linkHover: '#eeeeee'
   },
 };
 

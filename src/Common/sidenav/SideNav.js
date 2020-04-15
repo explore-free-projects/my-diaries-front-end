@@ -14,7 +14,7 @@ const StyledNav = styled.aside `
 const StyledLogo = styled.h1 `
   padding: 0px 25px;
   font-size: 32px;
-  color: #616161;
+  color: ${props => props.theme.textBrand};
 `;
 
 const StyledNavUl = styled.ul `
@@ -29,13 +29,13 @@ const StyledNavList = styled.li `
 
 const StyledNavLink = styled(Link) `
   text-decoration: none;
-  color: #77bca6;
+  color: ${props => props.theme.link};
   font-size: 1rem;
   display: block;
   padding: 6px 0;
 
   &:hover {
-    color: #4ba789;
+    color: ${props => props.theme.linkHover};
   }
 `;
 
