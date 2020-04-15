@@ -50,13 +50,7 @@ class SideNav extends Component {
         <StyledLogo>Noteworthy</StyledLogo>
         <StyledNavUl>
           <StyledNavList>
-            <StyledNavLink to="/">About</StyledNavLink>
-          </StyledNavList>
-          <StyledNavList>
-            <StyledNavLink to="/tags">Tags</StyledNavLink>
-          </StyledNavList>
-          <StyledNavList>
-            <StyledNavLink to="/archives">Archives</StyledNavLink>
+            <StyledNavLink to="/">Blogs</StyledNavLink>
           </StyledNavList>
         </StyledNavUl>
       </StyledNav>

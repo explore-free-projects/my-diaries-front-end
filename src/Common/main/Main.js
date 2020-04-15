@@ -27,12 +27,6 @@ class Main extends Component {
             <BlogsList 
               data={Blogs}/>
           </Route>
-          <Route path="/tags">
-            Tags
-          </Route>
-          <Route path="/archives">
-            Archives
-          </Route>
         </Switch>
       </StyledMain>
     );
