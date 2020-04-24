@@ -4,13 +4,13 @@ const common = require('./webpack.common.js');
 module.exports = merge(common, {
   mode: 'production',
 
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-      }
-    ]
-  }
+  // module: {
+  //   rules: [
+  //     {
+  //       test: /\.js$/,
+  //       loader: 'babel-loader',
+  //       exclude: /node_modules/,
+  //     }
+  //   ]
+  // }
 });

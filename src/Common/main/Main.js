@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { BlogsList } from "components";
 import { Blogs } from 'mocks';
 
-const StyledMain = styled.main `
+const MainWrapper = styled.main `
   position: absolute;
   left: 280px;
   overflow: auto;
@@ -21,14 +21,14 @@ class Main extends Component {
   }
   render() { 
     return (
-      <StyledMain>
+      <MainWrapper>
         <Switch>
           <Route path="/" exact>
             <BlogsList 
               data={Blogs}/>
           </Route>
         </Switch>
-      </StyledMain>
+      </MainWrapper>
     );
   }
 }

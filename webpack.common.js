@@ -29,6 +29,19 @@ module.exports = {
     module: {
       rules: [
         {
+            test: /\.js$/,
+            loader: 'babel-loader',
+            exclude: /node_modules/,
+            options: {
+                plugins: [
+                    [
+                        "babel-plugin-styled-components",
+                        { "displayName": true, "fileName": false }
+                    ]
+                ]
+            }
+        },
+        {
             test: /\.css$/,
             exclude: /node_modules/,
             loader: 'css-loader'

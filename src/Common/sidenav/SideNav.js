@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
-const StyledNav = styled.aside `
+const Nav = styled.aside `
   position: fixed;
   left: 0;
   top: 0;
@@ -11,23 +11,23 @@ const StyledNav = styled.aside `
   background-color: ${props => props.theme.bgColor};
 `;
 
-const StyledLogo = styled.h1 `
+const Logo = styled.h1 `
   padding: 0px 25px;
   font-size: 32px;
   color: ${props => props.theme.textBrand};
 `;
 
-const StyledNavUl = styled.ul `
+const NavUl = styled.ul `
   list-style:none;
   margin: 0;
   padding: 0 25px;
 `;
 
-const StyledNavList = styled.li `
+const NavList = styled.li `
   margin-bottom: 5px;
 `;
 
-const StyledNavLink = styled(Link) `
+const NavLink = styled(Link) `
   text-decoration: none;
   color: ${props => props.theme.link};
   font-size: 1rem;
@@ -46,14 +46,14 @@ class SideNav extends Component {
   }
   render() { 
     return ( 
-      <StyledNav>
-        <StyledLogo>Noteworthy</StyledLogo>
-        <StyledNavUl>
-          <StyledNavList>
-            <StyledNavLink to="/">Blogs</StyledNavLink>
-          </StyledNavList>
-        </StyledNavUl>
-      </StyledNav>
+      <Nav>
+        <Logo>Noteworthy</Logo>
+        <NavUl>
+          <NavList>
+            <NavLink to="/">Blogs</NavLink>
+          </NavList>
+        </NavUl>
+      </Nav>
     );
   }
 }
