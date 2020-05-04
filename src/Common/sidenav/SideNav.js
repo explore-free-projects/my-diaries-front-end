@@ -47,10 +47,12 @@ class SideNav extends Component {
   render() { 
     return ( 
       <Nav>
-        <Logo>Noteworthy</Logo>
+        <Logo>My Diaries</Logo>
         <NavUl>
           <NavList>
-            <NavLink to="/">Blogs</NavLink>
+            <NavLink to="/">Directory</NavLink>
+            <NavLink to="/tags">Tags</NavLink>
+            <NavLink to="/favourites">Favourites</NavLink>
           </NavList>
         </NavUl>
       </Nav>

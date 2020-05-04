@@ -1,5 +1,9 @@
-import BlogsList from "./BlogsList/BlogsList"
+import DiaryDirectory from "./Directory/DiaryDirectory";
+import Favourites from "./Favourites/Favourites";
+import Tags from "./Tags/Tags";
 
 export {
-  BlogsList
+  DiaryDirectory,
+  Favourites,
+  Tags
 }

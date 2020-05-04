@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import styled from 'styled-components';
-import { BlogsList } from "components";
-import { Blogs } from 'mocks';
+import { DiaryDirectory, Favourites, Tags } from "components";
+import { Blogs,  } from 'mocks';
 
 const MainWrapper = styled.main `
   position: absolute;
@@ -24,8 +24,14 @@ class Main extends Component {
       <MainWrapper>
         <Switch>
           <Route path="/" exact>
-            <BlogsList 
+            <DiaryDirectory 
               data={Blogs}/>
+          </Route>
+          <Route path="/tags">
+            <Tags />
+          </Route>
+          <Route path="/favourites">
+            <Favourites/>
           </Route>
         </Switch>
       </MainWrapper>
