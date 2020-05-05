@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Nav = styled.aside `
   position: fixed;
@@ -24,10 +24,10 @@ const NavUl = styled.ul `
 `;
 
 const NavList = styled.li `
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 `;
 
-const NavLink = styled(Link) `
+const Link = styled(NavLink) `
   text-decoration: none;
   color: ${props => props.theme.link};
   font-size: 1rem;
@@ -36,6 +36,10 @@ const NavLink = styled(Link) `
 
   &:hover {
     color: ${props => props.theme.linkHover};
+  }
+  
+  &.active {
+    color: ${props => props.theme.linkActive};
   }
 `;
 
@@ -50,9 +54,13 @@ class SideNav extends Component {
         <Logo>My Diaries</Logo>
         <NavUl>
           <NavList>
-            <NavLink to="/">Directory</NavLink>
-            <NavLink to="/tags">Tags</NavLink>
-            <NavLink to="/favourites">Favourites</NavLink>
+            <Link to="/" exact={true}>Directory</Link>
+          </NavList>  
+          <NavList>
+            <Link to="/favourites">Favourites</Link>
+          </NavList>
+          <NavList>
+            <Link to="/tags">Tags</Link>
           </NavList>
         </NavUl>
       </Nav>

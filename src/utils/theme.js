@@ -12,7 +12,8 @@ const themes = {
     textMute: '#c1c1c1',
     textBrand: '#616161',
     link: '#77bca6',
-    linkHover: '#4ba789'
+    linkHover: '#4ba789',
+    linkActive: '#333'
   },
   dark: {
     type: 'dark',
@@ -22,8 +23,9 @@ const themes = {
     textSecondary: '#b7b7b7',
     textMute: '#777777',
     textBrand: '#f9f9f9',
-    link: '#cecbcb',
-    linkHover: '#eeeeee'
+    link: '#b1a9a9',
+    linkHover: '#eeeeee',
+    linkActive: '#ffffff'
   },
 };
 

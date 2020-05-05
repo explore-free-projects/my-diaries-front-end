@@ -39,7 +39,7 @@ const ThemeToggleBtn = styled.button `
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
   }
-`
+`;
 
 function App() {
   const [theme, setTheme] = useState(lightTheme())

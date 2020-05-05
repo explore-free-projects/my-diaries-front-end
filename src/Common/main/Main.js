@@ -27,11 +27,11 @@ class Main extends Component {
             <DiaryDirectory 
               data={Blogs}/>
           </Route>
-          <Route path="/tags">
-            <Tags />
-          </Route>
           <Route path="/favourites">
             <Favourites/>
+          </Route>
+          <Route path="/tags">
+            <Tags />
           </Route>
         </Switch>
       </MainWrapper>
