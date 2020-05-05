@@ -11,7 +11,7 @@ const MainWrapper = styled.main `
   right: 0;
   top: 0;
   bottom: 0;
-  padding: 34px 25px;
+  padding: 36px;
 `;
 
 class Main extends Component {

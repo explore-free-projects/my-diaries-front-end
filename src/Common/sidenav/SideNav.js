@@ -8,7 +8,7 @@ const Nav = styled.aside `
   top: 0;
   bottom: 0;
   width: 280px;
-  background-color: ${props => props.theme.bgColor};
+  background-color: ${props => props.theme.sideNavbgColor};
 `;
 
 const Logo = styled.h1 `
@@ -43,6 +43,24 @@ const Link = styled(NavLink) `
   }
 `;
 
+const CreateButton = styled.button`
+  padding: 10px 23px;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  background-color: ${props => props.theme.buttonPrimaryBgColor};
+  color: white;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  margin: 0 20px 22px 20px;
+  cursor: pointer;
+  outline: 0;
+
+  &:hover {
+    background-color: ${props => props.theme.buttonPrimaryBgColorHover} ;
+  }
+`;
+
 class SideNav extends Component {
   constructor(props) {
     super(props);
@@ -52,6 +70,7 @@ class SideNav extends Component {
     return ( 
       <Nav>
         <Logo>My Diaries</Logo>
+        <CreateButton>Create a article</CreateButton>
         <NavUl>
           <NavList>
             <Link to="/" exact={true}>Directory</Link>
