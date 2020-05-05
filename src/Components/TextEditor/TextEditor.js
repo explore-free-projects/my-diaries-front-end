@@ -1,5 +1,5 @@
 import React from 'react';
-import { Editor, EditorState, RichUtils, getDefaultKeyBinding } from 'draft-js';
+import { Editor, EditorState, RichUtils, getDefaultKeyBinding, convertToRaw } from 'draft-js';
 import "./editor.css";
 
 const { useState, useRef, useCallback } = React;
@@ -11,6 +11,13 @@ function TextEditor(props) {
   const focus = () => {
     if (editor.current) editor.current.focus();
   };
+
+  const onSubmit = () => {
+    const content = editorState.getCurrentContent();
+    const dataToSaveBackend = convertToRaw(content);
+    const saveToDB = JSON.stringify(dataToSaveBackend)
+    console.log(saveToDB, "@@@@@@@@@@@@@@@@@")
+  }
 
   const handleKeyCommand = useCallback(
     (command, editorState) => {
@@ -92,6 +99,7 @@ function TextEditor(props) {
         />
       </div>
     </div>
+    <button onClick={onSubmit}>save</button>
     </div>
   );
 }
