@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import styled from 'styled-components';
-import { DiaryDirectory, Favourites, Tags } from "components";
+import { DiaryDirectory, Favourites, Tags, NewArticle } from "components";
 import { Blogs,  } from 'mocks';
 
 const MainWrapper = styled.main `
@@ -26,6 +26,9 @@ class Main extends Component {
           <Route path="/" exact>
             <DiaryDirectory 
               data={Blogs}/>
+          </Route>
+          <Route path="/new">
+            <NewArticle/>
           </Route>
           <Route path="/favourites">
             <Favourites/>

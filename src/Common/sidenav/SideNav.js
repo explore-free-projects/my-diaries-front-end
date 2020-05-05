@@ -43,7 +43,7 @@ const Link = styled(NavLink) `
   }
 `;
 
-const CreateButton = styled.button`
+const CreateButton = styled(NavLink)`
   padding: 10px 23px;
   border: none;
   border-radius: 20px;
@@ -55,6 +55,8 @@ const CreateButton = styled.button`
   margin: 0 20px 22px 20px;
   cursor: pointer;
   outline: 0;
+  display: inline-block;
+  text-decoration: none;
 
   &:hover {
     background-color: ${props => props.theme.buttonPrimaryBgColorHover} ;
@@ -70,7 +72,7 @@ class SideNav extends Component {
     return ( 
       <Nav>
         <Logo>My Diaries</Logo>
-        <CreateButton>Create a article</CreateButton>
+        <CreateButton to="/new">Create a article</CreateButton>
         <NavUl>
           <NavList>
             <Link to="/" exact={true}>Directory</Link>
