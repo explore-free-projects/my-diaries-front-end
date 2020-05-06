@@ -6,7 +6,7 @@ const themes = {
   light: {
     type: 'light',
     sideNavbgColor: '#031e4b',
-    bgColor: '#white',
+    bgColor: 'white',
     borderColor: "#ededed",
     textPrimary: '#025b96',
     textSecondary: '#797979',
