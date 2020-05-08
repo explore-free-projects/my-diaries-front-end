@@ -9,12 +9,18 @@ const Nav = styled.aside `
   bottom: 0;
   width: 280px;
   background-color: ${props => props.theme.sideNavbgColor};
+  z-index: 3;
 `;
 
-const Logo = styled.h1 `
+const Logo = styled(NavLink) `
   padding: 0px 25px;
   font-size: 32px;
   color: ${props => props.theme.textBrand};
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  margin-top: 14px;
+  margin-bottom: 28px;
 `;
 
 const NavUl = styled.ul `
@@ -71,7 +77,7 @@ class SideNav extends Component {
   render() { 
     return ( 
       <Nav>
-        <Logo>My Diaries</Logo>
+        <Logo to="/directory">My Diaries</Logo>
         <CreateButton to="/directory/new">Create a article</CreateButton>
         <NavUl>
           <NavList>

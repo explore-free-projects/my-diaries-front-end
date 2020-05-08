@@ -9,6 +9,7 @@ const IconButton = styled.button `
   background-color: ${({isActiveState}) => (isActiveState === true) ? "#031d4b": "#b3cce0"};
   color: ${({isActiveState}) => (isActiveState === true) ? "white": "#333"};
   border: none;
+  cursor: pointer;
 
   &:first-child {
     margin-left: 0
@@ -97,11 +98,19 @@ const InlineStyleControls = ({editorState, onToggle}) => {
       ))}
     </>
   );
+};
+
+function myBlockStyleFn (contentBlock) {
+  const type = contentBlock.getType();
+  if (type === 'blockquote') {
+    return 'block-quote-style';
+  }
 }
 
 
 export {
   InlineStyleControls,
   BlockStyleControls,
-  customStyle
+  customStyle,
+  myBlockStyleFn
 }

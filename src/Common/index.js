@@ -1,7 +1,9 @@
-import Main from './main/Main'
-import SideNav from './sidenav/SideNav'
+import Main from './Main/Main';
+import SideNav from './Sidenav/SideNav';
+import TopNav from './TopNav/TopNav';
 
 export {
   Main,
-  SideNav
+  SideNav,
+  TopNav
 }

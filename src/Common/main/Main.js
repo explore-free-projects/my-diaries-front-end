@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { DiaryDirectory, Favourites, Tags, NewArticle, ViewArticle } from "components";
 
 const MainWrapper = styled.main `
@@ -8,15 +8,14 @@ const MainWrapper = styled.main `
   left: 280px;
   overflow: auto;
   right: 0;
-  top: 0;
+  top: 68px;
   bottom: 0;
-  padding: 36px;
+  padding: 24px;
 `;
 
 class Main extends Component {
   constructor(props) {
     super(props);
-    this.state = {  }
   }
   render() { 
     return (

@@ -8,6 +8,7 @@ const BlogWrapper = styled.section `
   border-bottom: 1px solid ${props => props.theme.borderColor};
   margin-bottom: 20px;
   padding-bottom: 20px;
+  word-break: break-all;
 
   &:last-child {
     margin-bottom: 0px;
