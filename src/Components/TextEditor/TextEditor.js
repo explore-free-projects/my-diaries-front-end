@@ -9,8 +9,7 @@ const EditorWrapper = styled.div `
   min-height: 140px;
   padding: 10px;
   border-radius: 2px;
-  margin-top: 10px;
-  margin-bottom: 20px;
+  margin: 24px 0;
 
   .public-DraftEditorPlaceholder {
     &-root {
@@ -26,7 +25,7 @@ const EditorWrapper = styled.div `
 `;
 
 const EditorControls = styled.div `
-  margin-top: 20px;
+  margin-bottom: 20px;
 `;
 
 class TextEditor extends Component {
@@ -48,26 +47,26 @@ class TextEditor extends Component {
     const { editorState, onChange } = this.props;
     return (
       <>
-        <EditorControls>
-          <BlockStyleControls
-            editorState={editorState}
-            onToggle={blockType => {
-              const newState = RichUtils.toggleBlockType(editorState, blockType);
-              onChange(newState)
-            }}
-          />
-          <InlineStyleControls
-            editorState={editorState}
-            onToggle={inlineStyle => {
-              const newState = RichUtils.toggleInlineStyle(
-                editorState,
-                inlineStyle,
-              );
-              onChange(newState);
-            }}
-          />
-        </EditorControls>
         <EditorWrapper>
+          <EditorControls>
+            <BlockStyleControls
+              editorState={editorState}
+              onToggle={blockType => {
+                const newState = RichUtils.toggleBlockType(editorState, blockType);
+                onChange(newState)
+              }}
+            />
+            <InlineStyleControls
+              editorState={editorState}
+              onToggle={inlineStyle => {
+                const newState = RichUtils.toggleInlineStyle(
+                  editorState,
+                  inlineStyle,
+                );
+                onChange(newState);
+              }}
+            />
+          </EditorControls>
           <Editor
             placeholder="Tell your story"
             editorState={editorState}
