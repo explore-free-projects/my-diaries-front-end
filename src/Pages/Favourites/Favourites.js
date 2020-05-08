@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Loading, ArticleList } from 'components';
 
-class DiaryDirectory extends Component {
+class Favourites extends Component {
   constructor(props) {
     super(props);
     this.state = { 
@@ -11,7 +11,7 @@ class DiaryDirectory extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/api/diaries').then(val => val.json())
+    fetch('http://localhost:3000/api/diaries/favourites').then(val => val.json())
     .then(data => {
       this.setState({
         diaries: data.diaries,
@@ -46,4 +46,4 @@ class DiaryDirectory extends Component {
   }
 }
  
-export default DiaryDirectory;
+export default Favourites;

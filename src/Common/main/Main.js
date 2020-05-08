@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { DiaryDirectory, Favourites, Tags, NewArticle, ViewArticle } from "components";
+import { DiaryDirectory, NewArticle, ViewArticle } from "components";
+import { Favourites, Tags } from "pages"
 
 const MainWrapper = styled.main `
   position: absolute;

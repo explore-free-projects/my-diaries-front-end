@@ -37,12 +37,10 @@ class ArticleList extends Component {
   render() { 
     const diarie = this.props.data;
     return ( 
-      <>
-        <BlogWrapper key={diarie._id}>
-          <BlogTitle to={`/directory/${diarie._id}`}>{diarie.title}</BlogTitle>
-          <BlogContent>{diarie.content}</BlogContent>
-        </BlogWrapper>
-      </>
+      <BlogWrapper>
+        <BlogTitle to={this.props.redirectTo}>{diarie.title}</BlogTitle>
+        <BlogContent>{diarie.content}</BlogContent>
+      </BlogWrapper>
     );
   }
 }
