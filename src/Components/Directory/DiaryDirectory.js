@@ -48,7 +48,7 @@ class DiaryDirectory extends Component {
     fetch('http://localhost:3000/api/diaries').then(val => val.json())
     .then(data => {
       this.setState({
-        diaries: data,
+        diaries: data.diaries,
         isLoading: false
       })
     })

@@ -35,11 +35,6 @@ const HeaderTitle = styled.label `
 class TopNav extends Component {
   constructor(props) {
     super(props);
-    const pageName = this.props.location.pathname.split("/");
-    const captiatalFirstLetter = pageName[1][0].toUpperCase() + pageName[1].slice(1);
-    this.state = { 
-      pageTitle: captiatalFirstLetter
-    }
   }
   
   render() { 
@@ -47,7 +42,7 @@ class TopNav extends Component {
       <Header>
         <Row>
           <div>
-            <HeaderTitle>{this.state.pageTitle}</HeaderTitle>
+            <HeaderTitle>Page title</HeaderTitle>
           </div>
           <div>
 

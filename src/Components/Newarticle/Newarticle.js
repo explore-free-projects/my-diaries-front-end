@@ -85,7 +85,8 @@ class NewArticle extends Component {
       method: !!(this.state.diaryId) ? 'PUT' : 'POST',
       body: JSON.stringify({
         title: this.state.title,
-        content: markdownString
+        content: markdownString,
+        favorite: true
       }),
       headers: new Headers({
         'Content-Type': 'application/json'
