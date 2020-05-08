@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { withRouter } from "react-router";
 import { EditorState, convertToRaw, convertFromRaw } from 'draft-js';
 import { draftToMarkdown, markdownToDraft } from 'markdown-draft-js';
 import { TextEditor, Loading } from "components";
@@ -55,7 +56,8 @@ class NewArticle extends Component {
 
   componentDidMount() {
     if(this.state.diaryId) {
-      fetch('http://localhost:3000/api/diaries/'+ this.state.diaryId).then(val => val.json())
+      fetch('http://localhost:3000/api/diaries/'+ this.state.diaryId)
+        .then(val => val.json())
         .then(data => {
           const rawData = markdownToDraft(data.content);
           const contentState = convertFromRaw(rawData);
@@ -91,6 +93,11 @@ class NewArticle extends Component {
       headers: new Headers({
         'Content-Type': 'application/json'
       })
+    }).then(val => val.json())
+    .then(data => {
+      this.props.history.push("/directory/"+data._id)
+    }).catch(err => {
+      console.error("API ERROR", err)
     })
   }
 
@@ -121,4 +128,4 @@ class NewArticle extends Component {
   }
 }
  
-export default NewArticle;
+export default withRouter(NewArticle);

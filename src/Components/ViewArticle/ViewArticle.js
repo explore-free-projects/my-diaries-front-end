@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import { NavLink } from "react-router-dom";
 import { convertFromRaw, EditorState, Editor } from 'draft-js';
 import { markdownToDraft } from 'markdown-draft-js';
 import { Loading } from 'components';
-
 class ViewArticle extends Component {
   constructor(props) {
     super(props);
@@ -40,6 +40,7 @@ class ViewArticle extends Component {
         {
           this.state.isLoading ? <Loading /> :
           <div>
+            <NavLink to={`/directory/${this.state.diaryId}/edit`}>Edit</NavLink>
             <h1>{this.state.title}</h1>
             <Editor editorState={this.state.content} readOnly={true} />
           </div>

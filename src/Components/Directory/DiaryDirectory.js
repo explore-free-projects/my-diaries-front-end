@@ -30,11 +30,6 @@ const BlogContent = styled.p `
   margin-bottom: 16px;
 `;
 
-const BlogSubtitle = styled(NavLink) `
-  font-size: 14px;
-  color: ${props => props.theme.textMute};
-`;
-
 class DiaryDirectory extends Component {
   constructor(props) {
     super(props);
@@ -71,9 +66,6 @@ class DiaryDirectory extends Component {
             <BlogWrapper key={diarie._id}>
               <BlogTitle to={`/directory/${diarie._id}`}>{diarie.title}</BlogTitle>
               <BlogContent>{diarie.content}</BlogContent>
-              <div>
-                <BlogSubtitle to={`/directory/${diarie._id}/edit`}>edit</BlogSubtitle>
-              </div>
             </BlogWrapper>
           )
         }
