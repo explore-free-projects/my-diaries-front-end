@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
-import { DiaryDirectory, Favourites, Tags, NewArticle } from "components";
-import { Blogs,  } from 'mocks';
+import { DiaryDirectory, Favourites, Tags, NewArticle, ViewArticle } from "components";
 
 const MainWrapper = styled.main `
   position: absolute;
@@ -23,19 +22,13 @@ class Main extends Component {
     return (
       <MainWrapper>
         <Switch>
-          <Route path="/" exact>
-            <DiaryDirectory 
-              data={Blogs}/>
-          </Route>
-          <Route path="/new">
-            <NewArticle/>
-          </Route>
-          <Route path="/favourites">
-            <Favourites/>
-          </Route>
-          <Route path="/tags">
-            <Tags />
-          </Route>
+          <Route path="/directory" exact component={DiaryDirectory} />
+          <Route path="/directory/new" component={NewArticle} />
+          <Route path="/directory/:diaryId/edit" component={NewArticle} />
+          <Route path="/directory/:diaryId" component={ViewArticle} />
+          <Route path="/favourites" component={Favourites} />
+          <Route path="/tags" component={Tags} />
+          <Redirect from="/" to="/directory" />
         </Switch>
       </MainWrapper>
     );

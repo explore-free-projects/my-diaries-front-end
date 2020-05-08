@@ -72,10 +72,10 @@ class SideNav extends Component {
     return ( 
       <Nav>
         <Logo>My Diaries</Logo>
-        <CreateButton to="/new">Create a article</CreateButton>
+        <CreateButton to="/directory/new">Create a article</CreateButton>
         <NavUl>
           <NavList>
-            <Link to="/" exact={true}>Directory</Link>
+            <Link to="/directory" exact={true}>Directory</Link>
           </NavList>  
           <NavList>
             <Link to="/favourites">Favourites</Link>

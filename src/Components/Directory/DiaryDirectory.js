@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom'
+import { Loading } from 'components';
 
 const BlogWrapper = styled.section `
   max-width: 680px;
@@ -13,7 +15,7 @@ const BlogWrapper = styled.section `
   }
 `;
 
-const BlogTitle = styled.h1 `
+const BlogTitle = styled(NavLink) `
   font-size: 28px;
   margin: 0;
   color: ${props => props.theme.textPrimary};
@@ -27,27 +29,56 @@ const BlogContent = styled.p `
   margin-bottom: 16px;
 `;
 
-const BlogSubtitle = styled.span `
+const BlogSubtitle = styled(NavLink) `
   font-size: 14px;
   color: ${props => props.theme.textMute};
 `;
 
-function BlogsList(props) {   
-  return ( 
-    <Fragment>
-      {
-        props.data.map((blog) => 
-          <BlogWrapper key={blog.id}>
-            <BlogTitle>{blog.title}</BlogTitle>
-            <BlogContent>{blog.content}</BlogContent>
-            <div>
-              <BlogSubtitle>{blog.date}</BlogSubtitle>
-            </div>
-          </BlogWrapper>
-        )
-      }
-    </Fragment>
-  );
+class DiaryDirectory extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { 
+      diaries: [],
+      isLoading: true
+    }
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:3000/api/diaries').then(val => val.json())
+    .then(data => {
+      this.setState({
+        diaries: data,
+        isLoading: false
+      })
+    })
+    .catch(function(err) {
+      this.setState({
+        isLoading: false
+      })
+      console.log('Fetch Error :-S', err);
+    });
+  }
+
+  render() { 
+    const { diaries, isLoading } = this.state;
+    return ( 
+      <Fragment>
+        { isLoading ? 
+            <Loading/>
+          :
+          diaries.map((diarie) => 
+            <BlogWrapper key={diarie._id}>
+              <BlogTitle to={`/directory/${diarie._id}`}>{diarie.title}</BlogTitle>
+              <BlogContent>{diarie.content}</BlogContent>
+              <div>
+                <BlogSubtitle to={`/directory/${diarie._id}/edit`}>edit</BlogSubtitle>
+              </div>
+            </BlogWrapper>
+          )
+        }
+      </Fragment>
+    );
+  }
 }
  
-export default BlogsList;
+export default DiaryDirectory;
