@@ -5,10 +5,6 @@ import { EditorState, convertToRaw, convertFromRaw } from 'draft-js';
 import { draftToMarkdown, markdownToDraft } from 'markdown-draft-js';
 import { TextEditor, Loading } from "components";
 
-const NewArticleWrapper = styled.div `
-  max-width: 740px;
-`;
-
 const Title = styled.input.attrs({
   type: "text"
 }) `
@@ -20,24 +16,39 @@ const Title = styled.input.attrs({
   box-sizing: border-box;
   font-size: 14px;
   outline: 0;
+  margin-bottom: 24px;
 `;
 
-const SubmitButton = styled.button `
-  padding: 9px 28px;
-  background-color: #05386c;
-  color: white;
+const Button = styled.button `
+  padding: 8px 22px;
+  background-color:  ${({isPrimary}) => isPrimary ? "#05386c" : "#b3cde0" };
+  color: ${({isPrimary}) => isPrimary ? "white" : "#333" };
   border: none;
-  font-size: 1em;
+  font-size: 14px;
   min-width: 80px;
   border-radius: 16px;
   outline: 0;
   transition: ease 0.3s;
   cursor: pointer;
 
+  ~ button {
+    margin-left: 10px;
+  }
+
   &:hover {
-    background-color: #0b4c8e;
+    background-color: ${({isPrimary}) => isPrimary ? "#0b4c8e" : "#bdd7ea" };
     transition: ease 0.3s;
   }
+`;
+
+
+const FormLabel = styled.label `
+  font-size: 14px;
+  letter-spacing: 0.4px;
+  margin-bottom: 8px;
+  display: inline-block;
+  font-weight: 500;
+  color: #333;
 `;
 
 class NewArticle extends Component {
@@ -51,7 +62,8 @@ class NewArticle extends Component {
       diaryId: !!(props.match.params.diaryId) ? props.match.params.diaryId : ''
     }
 
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.goToDirectory = this.goToDirectory.bind(this)
   }
 
   componentDidMount() {
@@ -87,8 +99,7 @@ class NewArticle extends Component {
       method: !!(this.state.diaryId) ? 'PUT' : 'POST',
       body: JSON.stringify({
         title: this.state.title,
-        content: markdownString,
-        favorite: true
+        content: markdownString
       }),
       headers: new Headers({
         'Content-Type': 'application/json'
@@ -101,6 +112,10 @@ class NewArticle extends Component {
     })
   }
 
+  goToDirectory() {
+    this.props.history.push("/directory")
+  }
+
   render() { 
     const { title, editorState, isLoading } = this.state;
 
@@ -110,18 +125,21 @@ class NewArticle extends Component {
           isLoading ? 
             <Loading />
           :
-          <NewArticleWrapper>
+          <div>
+            <FormLabel>Story title</FormLabel>
             <Title 
               value={title}
               onChange={(e) => this.setState({ title:e.target.value})}
               placeholder="Title"
               />
+            <FormLabel>Story description</FormLabel>
             <TextEditor
               editorState={editorState}
               onChange={(editorState) => this.setState({editorState})}
             />
-            <SubmitButton type="submit" onClick={this.handleSubmit}>Save</SubmitButton>
-          </NewArticleWrapper>
+            <Button isPrimary type="submit" onClick={this.handleSubmit}>Save</Button>
+            <Button isSecondary onClick={this.goToDirectory}>Cancel</Button>
+          </div>
         }
       </>
     );

@@ -14,6 +14,12 @@ const MainWrapper = styled.main `
   padding: 24px;
 `;
 
+const MainWrapperContent = styled.div `
+  max-width: 740px;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -21,6 +27,7 @@ class Main extends Component {
   render() { 
     return (
       <MainWrapper>
+        <MainWrapperContent>
         <Switch>
           <Route path="/directory" exact component={DiaryDirectory} />
           <Route path="/directory/new" component={NewArticle} />
@@ -30,6 +37,7 @@ class Main extends Component {
           <Route path="/tags" component={Tags} />
           <Redirect from="/" to="/directory" />
         </Switch>
+        </MainWrapperContent>
       </MainWrapper>
     );
   }

@@ -86,9 +86,9 @@ class SideNav extends Component {
           <NavList>
             <Link to="/favourites">Favourites</Link>
           </NavList>
-          <NavList>
+          {/* <NavList>
             <Link to="/tags">Tags</Link>
-          </NavList>
+          </NavList> */}
         </NavUl>
       </Nav>
     );

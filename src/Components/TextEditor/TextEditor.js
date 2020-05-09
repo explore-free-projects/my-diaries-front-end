@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Editor, RichUtils } from 'draft-js';
-import { BlockStyleControls, InlineStyleControls, customStyle, myBlockStyleFn } from "./TextEditorUtils";
+import { BlockStyleControls, InlineStyleControls, myBlockStyleFn } from "./TextEditorUtils";
+import { TextEditorPreview } from 'components';
 
 const EditorWrapper = styled.div `
   border: 1px solid #6497b1;
@@ -11,16 +12,6 @@ const EditorWrapper = styled.div `
   border-radius: 2px;
   border-top-left-radius: 0px;
   margin-bottom: 24px;
-
-  .block-quote-style {
-    color: #b5b5b5;
-    font-family: 'Hoefler Text',Georgia,serif;
-    text-align: left;
-    border-left: 3px solid #b5b5b5;
-    margin: 0;
-    padding: 16px 10px 16px 20px;
-    letter-spacing: 0.7px;
-  }
 
   .public-DraftEditorPlaceholder {
     &-root {
@@ -37,10 +28,6 @@ const EditorWrapper = styled.div `
 
 const EditorControls = styled.div `
   margin-bottom: 20px;
-`;
-
-const EditorTab = styled.div `
-  margin-top: 20px;
 `;
 
 const EditorTabItem = styled.button `
@@ -98,15 +85,14 @@ class TextEditor extends Component {
     const { editorPreview } = this.state;
     return (
       <>
-        <EditorTab>
+        <div>
           <EditorTabItem onClick={() => this.showEditorPreview(false)} className={editorPreview === false ? "is-active": "un-active"}>Editor</EditorTabItem>
           <EditorTabItem onClick={() => this.showEditorPreview(true)} className={editorPreview === true ? "is-active": "un-active"}>Preview</EditorTabItem>
-        </EditorTab>
+        </div>
         <EditorWrapper>
         {editorPreview ? 
-          <Editor 
-          editorState={editorState} 
-          readOnly={true} />
+          <TextEditorPreview 
+            content={editorState}/>
           :
             <>
               <EditorControls>
@@ -134,7 +120,6 @@ class TextEditor extends Component {
                 editorState={editorState}
                 handleKeyCommand={this.handleKeyCommand}
                 onChange={onChange}
-                customStyleMap={customStyle}
               />
             </>
           }

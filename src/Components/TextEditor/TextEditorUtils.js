@@ -52,15 +52,6 @@ const StyleButton = ({onToggle, active, label, style}) => {
   );
 }
 
-const customStyle = {
-  CODE: {
-    backgroundColor: 'rgba(0, 0, 0, 0.05)',
-    fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
-    fontSize: 16,
-    padding: 2,
-  },
-};
-
 const BlockStyleControls = ({editorState, onToggle})  => {
   const selection = editorState.getSelection();
   const blockType = editorState
@@ -103,7 +94,9 @@ const InlineStyleControls = ({editorState, onToggle}) => {
 function myBlockStyleFn (contentBlock) {
   const type = contentBlock.getType();
   if (type === 'blockquote') {
-    return 'block-quote-style';
+    return 'draftjs-block-quote-style';
+  } else if (type === 'code-block') {
+    return 'draftjs-code-style';
   }
 }
 
@@ -111,6 +104,5 @@ function myBlockStyleFn (contentBlock) {
 export {
   InlineStyleControls,
   BlockStyleControls,
-  customStyle,
   myBlockStyleFn
 }
