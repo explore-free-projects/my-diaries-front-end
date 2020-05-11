@@ -79,7 +79,7 @@ class NewArticle extends Component {
 
   componentDidMount() {
     if(this.state.diaryId) {
-      fetch('http://localhost:3000/api/diaries/'+ this.state.diaryId)
+      fetch(`${API_URL}/api/diaries/`+ this.state.diaryId)
         .then(val => val.json())
         .then(data => {
           const rawData = markdownToDraft(data.content, {
@@ -121,7 +121,7 @@ class NewArticle extends Component {
       return;
     }
 
-    fetch('http://localhost:3000/api/diaries/'+ this.state.diaryId , {
+    fetch(`${API_URL}/api/diaries/`+ this.state.diaryId , {
       method: !!(this.state.diaryId) ? 'PUT' : 'POST',
       body: JSON.stringify({
         title: this.state.title,

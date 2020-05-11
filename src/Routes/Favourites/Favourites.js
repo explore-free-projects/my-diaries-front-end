@@ -29,7 +29,7 @@ class Favourites extends Component {
     
     this.setState({ isLoading: true})
 
-    fetch(`http://localhost:3000/api/diaries/favourites/${queryParams}`)
+    fetch(`${API_URL}/api/diaries/favourites/${queryParams}`)
       .then(val => val.json())
       .then(data => {
         
