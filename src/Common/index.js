@@ -1,7 +1,11 @@
-import Main from './main/Main'
-import SideNav from './sidenav/SideNav'
+import Main from './Main/Main';
+import SideNav from './Sidenav/SideNav';
+import TopNav from './TopNav/TopNav';
+import EmptyState from './EmptyState/EmptyState';
 
 export {
   Main,
-  SideNav
+  SideNav,
+  TopNav,
+  EmptyState
 }

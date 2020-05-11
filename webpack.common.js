@@ -22,6 +22,7 @@ module.exports = {
         alias: {
             components: path.resolve(__dirname, './src/Components'),
             common: path.resolve(__dirname, './src/Common'),
+            routes: path.resolve(__dirname, './src/Routes'),
             mocks: path.resolve(__dirname, './src/Mocks'),
             utils: path.resolve(__dirname, './src/utils')
         }
@@ -44,7 +45,7 @@ module.exports = {
         {
             test: /\.css$/,
             exclude: /node_modules/,
-            loader: 'css-loader'
+            use: ['style-loader', 'css-loader'],
         },
         {
             test: /\.(png|jpe?g|gif|svg)$/,

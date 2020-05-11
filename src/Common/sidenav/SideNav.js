@@ -9,12 +9,18 @@ const Nav = styled.aside `
   bottom: 0;
   width: 280px;
   background-color: ${props => props.theme.sideNavbgColor};
+  z-index: 3;
 `;
 
-const Logo = styled.h1 `
+const Logo = styled(NavLink) `
   padding: 0px 25px;
   font-size: 32px;
   color: ${props => props.theme.textBrand};
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  margin-top: 14px;
+  margin-bottom: 28px;
 `;
 
 const NavUl = styled.ul `
@@ -43,7 +49,7 @@ const Link = styled(NavLink) `
   }
 `;
 
-const CreateButton = styled.button`
+const CreateButton = styled(NavLink)`
   padding: 10px 23px;
   border: none;
   border-radius: 20px;
@@ -55,6 +61,8 @@ const CreateButton = styled.button`
   margin: 0 20px 22px 20px;
   cursor: pointer;
   outline: 0;
+  display: inline-block;
+  text-decoration: none;
 
   &:hover {
     background-color: ${props => props.theme.buttonPrimaryBgColorHover} ;
@@ -69,18 +77,22 @@ class SideNav extends Component {
   render() { 
     return ( 
       <Nav>
-        <Logo>My Diaries</Logo>
-        <CreateButton>Create a article</CreateButton>
+        <Logo to="/directory">My Diaries</Logo>
+        <CreateButton to="/directory/new">Create a article</CreateButton>
         <NavUl>
           <NavList>
-            <Link to="/" exact={true}>Directory</Link>
+            <Link to="/directory" 
+              isActive={(match, location) => {
+                return location.pathname.indexOf("directory") !== -1;
+              }}
+              exact={true}>Directory</Link>
           </NavList>  
           <NavList>
-            <Link to="/favourites">Favourites</Link>
+            <Link to="/favourites">Starred</Link>
           </NavList>
-          <NavList>
+          {/* <NavList>
             <Link to="/tags">Tags</Link>
-          </NavList>
+          </NavList> */}
         </NavUl>
       </Nav>
     );

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Router } from "react-router-dom";
 import styled, { ThemeProvider } from 'styled-components'
-import { Main, SideNav } from 'common';
+import { Main } from 'common';
 import { GlobalStyle, Themes, History } from 'utils';
 
 const lightTheme = () => ({
@@ -64,7 +64,6 @@ function App() {
       </ThemeToggle>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <SideNav/>
         <Main/>
       </ThemeProvider>
     </Router>
