@@ -29,18 +29,10 @@ const ThemeToggleBtn = styled.button `
   outline: 0;
   font-weight: 500;
   background-color: ${props => (props.currentTheme === true) ? "#8bc5b2" : "#ffffff"};
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
   &:first-child {
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
   }
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
   &:last-child {
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
