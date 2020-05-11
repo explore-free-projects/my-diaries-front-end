@@ -11,7 +11,7 @@ const EditorWrapper = styled.div `
   padding: 10px;
   border-radius: 2px;
   border-top-left-radius: 0px;
-  margin-bottom: 24px;
+  margin-bottom: 6px;
 
   .public-DraftEditorPlaceholder {
     &-root {

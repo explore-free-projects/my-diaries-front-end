@@ -16,7 +16,7 @@ const Title = styled.input.attrs({
   box-sizing: border-box;
   font-size: 14px;
   outline: 0;
-  margin-bottom: 24px;
+  margin-bottom: 6px ;
 `;
 
 const Button = styled.button `
@@ -51,13 +51,24 @@ const FormLabel = styled.label `
   color: #333;
 `;
 
+const FormGroup = styled.div `
+  margin-bottom: 20px;
+`;
+
+const ErrorLabel = styled.label `
+  color: red;
+  font-size: 14px;
+`;
+
 class NewArticle extends Component {
   constructor(props) {
     super(props);
     
     this.state = { 
       title: '',
+      titleError: '',
       editorState: EditorState.createEmpty(),
+      editorStateError: '',
       isLoading: !!(props.match.params.diaryId) ? true : false,
       diaryId: !!(props.match.params.diaryId) ? props.match.params.diaryId : ''
     }
@@ -97,6 +108,19 @@ class NewArticle extends Component {
     const rawObject = convertToRaw(content);
     const markdownString = draftToMarkdown(rawObject, { preserveNewlines: true });
     
+    // Basic validation
+    if(this.state.title.trim().length <= 0){
+      this.setState({
+        titleError: "Please enter the title"
+      })
+      return 
+    }else if(markdownString.trim().length <= 0){
+      this.setState({
+        editorStateError: "Please enter altest 2 charactors"
+      })
+      return;
+    }
+
     fetch('http://localhost:3000/api/diaries/'+ this.state.diaryId , {
       method: !!(this.state.diaryId) ? 'PUT' : 'POST',
       body: JSON.stringify({
@@ -119,7 +143,7 @@ class NewArticle extends Component {
   }
 
   render() { 
-    const { title, editorState, isLoading } = this.state;
+    const { title, editorState, isLoading, titleError, editorStateError } = this.state;
 
     return ( 
       <>
@@ -128,17 +152,23 @@ class NewArticle extends Component {
             <Loading />
           :
           <div>
-            <FormLabel>Story title</FormLabel>
-            <Title 
-              value={title}
-              onChange={(e) => this.setState({ title:e.target.value})}
-              placeholder="Title"
+            <FormGroup>
+              <FormLabel>Story title <ErrorLabel>*</ErrorLabel></FormLabel>
+              <Title 
+                value={title}
+                onChange={(e) => this.setState({ title:e.target.value, titleError: ''})}
+                placeholder="Title"
+                />
+              {titleError && <ErrorLabel>{titleError}</ErrorLabel>}
+            </FormGroup>
+            <FormGroup>
+              <FormLabel>Story description <ErrorLabel>*</ErrorLabel></FormLabel>
+              <TextEditor
+                editorState={editorState}
+                onChange={(editorState) => this.setState({editorState, editorStateError: ''})}
               />
-            <FormLabel>Story description</FormLabel>
-            <TextEditor
-              editorState={editorState}
-              onChange={(editorState) => this.setState({editorState})}
-            />
+              {editorStateError && <ErrorLabel>{editorStateError}</ErrorLabel>}
+            </FormGroup>
             <Button isPrimary type="submit" onClick={this.handleSubmit}>Save</Button>
             <Button isSecondary onClick={this.goToDirectory}>Cancel</Button>
           </div>
