@@ -90,7 +90,9 @@ class ViewArticle extends Component {
   componentDidMount() {
     fetch('http://localhost:3000/api/diaries/'+ this.state.diaryId).then(val => val.json())
       .then(data => {
-        const rawData = markdownToDraft(data.content);
+        const rawData = markdownToDraft(data.content, {
+          preserveNewlines: true,
+        });
         const contentState = convertFromRaw(rawData);
         const editorState = EditorState.createWithContent(contentState);
 

@@ -81,7 +81,11 @@ class SideNav extends Component {
         <CreateButton to="/directory/new">Create a article</CreateButton>
         <NavUl>
           <NavList>
-            <Link to="/directory" exact={true}>Directory</Link>
+            <Link to="/directory" 
+              isActive={(match, location) => {
+                return location.pathname.indexOf("directory") !== -1;
+              }}
+              exact={true}>Directory</Link>
           </NavList>  
           <NavList>
             <Link to="/favourites">Favourites</Link>

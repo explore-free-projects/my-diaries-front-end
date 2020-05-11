@@ -71,7 +71,9 @@ class NewArticle extends Component {
       fetch('http://localhost:3000/api/diaries/'+ this.state.diaryId)
         .then(val => val.json())
         .then(data => {
-          const rawData = markdownToDraft(data.content);
+          const rawData = markdownToDraft(data.content, {
+            preserveNewlines: true,
+          });
           const contentState = convertFromRaw(rawData);
           const newEditorState = EditorState.createWithContent(contentState);
 
@@ -93,7 +95,7 @@ class NewArticle extends Component {
   handleSubmit(e) {
     const content = this.state.editorState.getCurrentContent();
     const rawObject = convertToRaw(content);
-    const markdownString = draftToMarkdown(rawObject);
+    const markdownString = draftToMarkdown(rawObject, { preserveNewlines: true });
     
     fetch('http://localhost:3000/api/diaries/'+ this.state.diaryId , {
       method: !!(this.state.diaryId) ? 'PUT' : 'POST',

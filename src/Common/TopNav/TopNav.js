@@ -32,9 +32,35 @@ const HeaderTitle = styled.label `
   text-transform: capitalize;
 `;
 
+function pageTitleManipulate(paths) {
+  let sperateStr = paths.pathname.split("/")[1];
+  let captalize = sperateStr.charAt(0).toUpperCase() + sperateStr.slice(1)
+
+  document.title = `${captalize} - My diaries`;
+
+  return captalize;
+}
+
 class TopNav extends Component {
   constructor(props) {
     super(props);
+    
+    this.state = {
+      title: pageTitleManipulate(props.history.location)
+   }
+  }
+
+  changeTitle = (newTitle) => { 
+    this.setState({
+      title: newTitle
+    })
+  }
+
+  componentDidMount(){
+    this.props.history.listen(() => {
+      let title = pageTitleManipulate(this.props.history.location);
+      this.changeTitle(title);
+    })
   }
   
   render() { 
@@ -42,7 +68,7 @@ class TopNav extends Component {
       <Header>
         <Row>
           <div>
-            <HeaderTitle>Page title</HeaderTitle>
+            <HeaderTitle>{this.state.title}</HeaderTitle>
           </div>
           <div>
 
