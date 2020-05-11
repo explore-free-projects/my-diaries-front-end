@@ -26,10 +26,13 @@ class Favourites extends Component {
     fetch(`http://localhost:3000/api/diaries/favourites/${queryParams}`)
       .then(val => val.json())
       .then(data => {
-        this.setState({
-          data: data,
-          isLoading: false
-        })
+        
+        setTimeout(() => {
+          this.setState({
+            data: data,
+            isLoading: false
+          })
+        }, 400)
       })
       .catch(function(err) {
         this.setState({
