@@ -88,7 +88,7 @@ class SideNav extends Component {
               exact={true}>Directory</Link>
           </NavList>  
           <NavList>
-            <Link to="/favourites">Favourites</Link>
+            <Link to="/favourites">Starred</Link>
           </NavList>
           {/* <NavList>
             <Link to="/tags">Tags</Link>

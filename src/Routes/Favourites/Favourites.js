@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
+import { withRouter } from "react-router";
 import { Loading, ArticleList, ModuleSearch } from 'components';
+import { EmptyState } from 'common';
 
 function queryValue(queries, keyName) {
   let query = new URLSearchParams(queries);
@@ -11,8 +13,10 @@ class Favourites extends Component {
     super(props);
     this.state = { 
       data: [],
-      isLoading: true
-    }
+      isLoading: true,
+      page: 1
+    },
+
     this.fetchDirectoryDetails = this.fetchDirectoryDetails.bind(this);
   }
 
@@ -22,6 +26,8 @@ class Favourites extends Component {
 
   fetchDirectoryDetails(e) {
     let queryParams = this.props.location.search;
+    
+    this.setState({ isLoading: true})
 
     fetch(`http://localhost:3000/api/diaries/favourites/${queryParams}`)
       .then(val => val.json())
@@ -50,28 +56,41 @@ class Favourites extends Component {
     };
     return ( 
       <Fragment>
-        { data.diaries &&
-          <ModuleSearch
-            queryValue={query.Key}
-            queryPage={query.Page}
-            onSearch={this.fetchDirectoryDetails}
-            placeHolder="Search by title"
-            pageMeta={data.meta}/>
+        {
+          (data.diaries && data.diaries.length > 0 || (query.Key.length > 0)) &&
+            <ModuleSearch
+              queryValue={query.Key}
+              queryPage={query.Page}
+              onSearch={this.fetchDirectoryDetails}
+              placeHolder="Search by title"
+              pageMeta={data.meta}/>
         }
+
         { isLoading ? 
             <Loading/>
           :
-          data.diaries.map((diarie) => 
-            <ArticleList
-              key={diarie._id}
-              redirectTo={`/directory/${diarie._id}`}
-              data={diarie}
+          <>
+            <DiaryLists
+              diaries={data.diaries}
               />
-          )
+          </>
         }
       </Fragment>
     );
   }
 }
+
+function DiaryLists({ diaries }) {
+  return ( diaries.length > 0 ? 
+    diaries.map((diarie) => 
+      <ArticleList
+        key={diarie._id}
+        redirectTo={`/directory/${diarie._id}`}
+        data={diarie}
+        />
+    ) : <EmptyState
+        content="You don't have any saved starred."/>
+  )
+}
  
-export default Favourites;
+export default withRouter(Favourites);
