@@ -94,9 +94,10 @@ class ArticleList extends Component {
   }
 
   convertString = (content) => {
-    const rawData = markdownToDraft(content);
-    const plainText = convertFromRaw(rawData).getPlainText();
-    const trimmedText = plainText.slice(0, 160);
+    let rawData = markdownToDraft(content);
+    let plainText = convertFromRaw(rawData).getPlainText();
+    let trimmedText = plainText.slice(0, 300);
+    trimmedText = trimmedText.concat(plainText.length > 200 ? "..." : "");  
     return trimmedText;
   }
 
@@ -105,16 +106,8 @@ class ArticleList extends Component {
     return ( 
       <DiaryWrapper>
         <DiaryTitle to={this.props.redirectTo}>{diarie.title}</DiaryTitle>
-        {/* <DiaryDetails>
-          {diarie.tags.map((tag, index) => 
-            <HashTag key={index.toString()}>
-              {tag}
-            </HashTag>
-          )}
-        </DiaryDetails> */}
         <DiaryDetails>
           <DiaryDate><DateFormat format="DD MMM YYYY">{diarie.created_at}</DateFormat></DiaryDate>
-          {/* <DiaryDate>Modfied: <DateFormat date={diarie.updated_at} durationFromNow /></DiaryDate> */}
         </DiaryDetails>
         <DiaryContent>{this.convertString(diarie.content)}</DiaryContent>
       </DiaryWrapper>

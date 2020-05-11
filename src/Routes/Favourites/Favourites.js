@@ -1,39 +1,64 @@
 import React, { Component, Fragment } from 'react';
-import { Loading, ArticleList } from 'components';
+import { Loading, ArticleList, ModuleSearch } from 'components';
+
+function queryValue(queries, keyName) {
+  let query = new URLSearchParams(queries);
+  return query.get(keyName) || "";
+}
 
 class Favourites extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      diaries: [],
+      data: [],
       isLoading: true
     }
+    this.fetchDirectoryDetails = this.fetchDirectoryDetails.bind(this);
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/api/diaries/favourites').then(val => val.json())
-    .then(data => {
-      this.setState({
-        diaries: data.diaries,
-        isLoading: false
+    this.fetchDirectoryDetails()
+  }
+
+  fetchDirectoryDetails(e) {
+    let queryParams = this.props.location.search;
+
+    fetch(`http://localhost:3000/api/diaries/favourites/${queryParams}`)
+      .then(val => val.json())
+      .then(data => {
+        this.setState({
+          data: data,
+          isLoading: false
+        })
       })
-    })
-    .catch(function(err) {
-      this.setState({
-        isLoading: false
-      })
-      console.log('Fetch Error :-S', err);
-    });
+      .catch(function(err) {
+        this.setState({
+          isLoading: false
+        })
+        console.log('Fetch Error :-S', err);
+      });
   }
 
   render() { 
-    const { diaries, isLoading } = this.state;
+    const { data, isLoading } = this.state;
+    const query = {
+      Key: queryValue(this.props.location.search, "query"),
+      Page: queryValue(this.props.location.search, "page")
+    };
     return ( 
       <Fragment>
+        { data.diaries &&
+          <ModuleSearch
+            queryValue={query.Key}
+            queryPage={query.Page}
+            onSearch={this.fetchDirectoryDetails}
+            placeHolder="Search by title"
+            pageMeta={data.meta}/>
+        }
         { isLoading ? 
             <Loading/>
           :
-          diaries.map((diarie) => 
+          data.diaries.map((diarie) => 
             <ArticleList
               key={diarie._id}
               redirectTo={`/directory/${diarie._id}`}

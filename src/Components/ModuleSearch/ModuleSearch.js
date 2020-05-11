@@ -70,6 +70,21 @@ class ModuleSearch extends Component {
     this.setSearchKeysearchTerm = this.setSearchKeysearchTerm.bind(this)
   }
 
+  setQueryPage(page, variant) {
+    let query = new URLSearchParams(this.props.location.search);
+    page = parseInt(page) > 0 ? parseInt(page) : 1;
+    page = variant === "inc" ? page + 1 : page -1;
+    
+    query.set("page", page)
+    
+    this.props.history.push({
+      pathname: this.props.location.pathname,
+      search: query.toString()
+    })
+
+    this.setSearchTerm()  
+  }
+
   setSearchKeysearchTerm(searchTerm) {
     this.props.history.push({
       pathname: this.props.location.pathname,
@@ -83,7 +98,7 @@ class ModuleSearch extends Component {
   }, 600);
 
   render() { 
-    const { placeHolder, pageMeta, queryValue }  = this.props; 
+    const { placeHolder, pageMeta, queryValue, queryPage }  = this.props; 
     return ( 
       <FlexRow>
         <SearchInput
@@ -93,9 +108,11 @@ class ModuleSearch extends Component {
         />
         <div>
           <PaginationButton
+            onClick={() => this.setQueryPage(queryPage, "dec")}
             disabled={!pageMeta.hasPrevPage}
             >Previous</PaginationButton>
           <PaginationButton
+            onClick={() => this.setQueryPage(queryPage, "inc")}
             disabled={!pageMeta.hasNextPage}
             >Next</PaginationButton>
         </div>
