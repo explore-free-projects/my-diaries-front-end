@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { DiaryDirectory, NewArticle, ViewArticle } from "components";
-import { Favourites, Tags } from "pages"
+import { NewArticle, ViewArticle } from "components";
+import { Directory, Favourites, Tags } from "routes";
 
 const MainWrapper = styled.main `
   position: absolute;
@@ -29,7 +29,7 @@ class Main extends Component {
       <MainWrapper>
         <MainWrapperContent>
         <Switch>
-          <Route path="/directory" exact component={DiaryDirectory} />
+          <Route path="/directory" exact component={Directory} />
           <Route path="/directory/new" component={NewArticle} />
           <Route path="/directory/:diaryId/edit" component={NewArticle} />
           <Route path="/directory/:diaryId" component={ViewArticle} />

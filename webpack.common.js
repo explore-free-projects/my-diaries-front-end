@@ -22,7 +22,7 @@ module.exports = {
         alias: {
             components: path.resolve(__dirname, './src/Components'),
             common: path.resolve(__dirname, './src/Common'),
-            pages: path.resolve(__dirname, './src/Pages'),
+            routes: path.resolve(__dirname, './src/Routes'),
             mocks: path.resolve(__dirname, './src/Mocks'),
             utils: path.resolve(__dirname, './src/utils')
         }
