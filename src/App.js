@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Router } from "react-router-dom";
 import styled, { ThemeProvider } from 'styled-components'
-import { Main } from 'common';
+import Main from "./Common/main/Main";
 import { GlobalStyle, Themes, History } from 'utils';
 
 const lightTheme = () => ({
