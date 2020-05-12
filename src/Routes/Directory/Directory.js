@@ -29,7 +29,7 @@ class Directory extends Component {
     
     this.setState({ isLoading: true})
 
-    fetch(`http://localhost:3000/api/diaries/${queryParams}`)
+    fetch(`${API_URL}/api/diaries/${queryParams}`)
       .then(val => val.json())
       .then(data => {
         

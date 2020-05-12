@@ -88,7 +88,7 @@ class ViewArticle extends Component {
     this.toggleFav = this.toggleFav.bind(this);
   }
   componentDidMount() {
-    fetch('http://localhost:3000/api/diaries/'+ this.state.diaryId).then(val => val.json())
+    fetch(`${API_URL}/api/diaries/`+ this.state.diaryId).then(val => val.json())
       .then(data => {
         const rawData = markdownToDraft(data.content, {
           preserveNewlines: true,
@@ -111,7 +111,7 @@ class ViewArticle extends Component {
   }
 
   toggleFav() {
-    fetch('http://localhost:3000/api/diaries/'+ this.state.diaryId , {
+    fetch(`${API_URL}/api/diaries/`+ this.state.diaryId , {
       method: 'PUT',
       body: JSON.stringify({
         favorite: !this.state.data.favorite
