@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
 import { withRouter } from "react-router";
+import { LocalStorage } from 'utils';
+
+const localStore = LocalStorage();
 
 const Header = styled.header `
   position: fixed;
@@ -23,6 +26,10 @@ const Row = styled.div `
   > div {
     flex: 1
   }
+
+  > div:last-child {
+    text-align: right;
+  }
 `; 
 
 const HeaderTitle = styled.label `
@@ -44,6 +51,16 @@ const BackButton = styled.button `
   cursor: pointer;
 `;
 
+const Logout = styled.button `
+  border: none;
+  background-color: transparent;
+  font-size: 14px;
+  text-decoration: underline;
+  color: #031e4b;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+`;
 
 function pageTitleManipulate(paths) {
   let sperateStr = paths.pathname.split("/")[1];
@@ -95,6 +112,11 @@ class TopNav extends Component {
   goBackPrevPage() {
     this.props.history.goBack()
   }
+
+  logOut() {
+    localStore.removeName("jwt");
+    this.props.history.push("/login");
+  }
   
   render() { 
     return (  
@@ -109,7 +131,7 @@ class TopNav extends Component {
             </HeaderTitle>
           </div>
           <div>
-
+            <Logout onClick={() => this.logOut()}>Logout</Logout>
           </div>
         </Row>
       </Header>  

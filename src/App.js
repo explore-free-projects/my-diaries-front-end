@@ -9,7 +9,6 @@ const lightTheme = () => ({
   ...Themes['light'],
 });
 
-
 function App() {
   const [theme] = useState(lightTheme())
   return (
