@@ -69,7 +69,7 @@ const CreateButton = styled(NavLink)`
   }
 `;
 
-class SideNav extends Component {
+class SideNavigation extends Component {
   constructor(props) {
     super(props);
     this.state = {  }
@@ -99,4 +99,4 @@ class SideNav extends Component {
   }
 }
  
-export default SideNav;
+export default SideNavigation;
