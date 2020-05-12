@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Switch, Route, Redirect, IndexRoute } from 'react-router-dom';
 import { NewArticle, ViewArticle, } from "components";
-import { SideNav, TopNav } from 'common';
+import { SideNavigation, TopNav } from 'common';
 import { Directory, Favourites, Tags } from "routes";
 
 const MainWrapper = styled.main `
@@ -30,7 +30,7 @@ class Main extends Component {
   render() { 
     return (
       <>
-        <SideNav/>
+        <SideNavigation/>
         <TopNav/>
         <MainWrapper>
           <MainWrapperContent>

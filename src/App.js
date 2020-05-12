@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Router } from "react-router-dom";
 import styled, { ThemeProvider } from 'styled-components'
-import { Main } from 'common';
+import { MainLayout } from 'common';
 import { GlobalStyle, Themes, History } from 'utils';
 
 const lightTheme = () => ({
@@ -31,7 +31,7 @@ function App() {
     <Router history={History}>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <Main/>
+        <MainLayout/>
       </ThemeProvider>
     </Router>
   );
