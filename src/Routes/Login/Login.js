@@ -14,7 +14,7 @@ const LoginForm = styled.form `
   right: 0;
   bottom: 0;
   top: 50%;
-  transform: translateY(-45%);
+  transform: translateY(-54%);
 
   > button {
     width: 100%;
@@ -38,6 +38,19 @@ const LoginInput = styled.input `
   font-size: 14px;
   line-height: 21px;
   outline: 0;
+`;
+
+const Logo = styled.h1 `
+  font-size: 33px;
+  color: #333;
+  text-decoration: none;
+  font-weight: 700;
+  display: inline-block;
+  margin-bottom: 28px;
+  text-align: center;
+  margin: auto;
+  display: block;
+  line-height: 72px;
 `;
 
 const InputLabel = styled.label `
@@ -82,6 +95,7 @@ class Login extends Component {
   render() { 
     return ( 
       <LoginForm onSubmit={this.handleSubmit}>
+        <Logo>My Diaries</Logo>
         <LoginInputGroup>
           <InputLabel>Username</InputLabel>
           <LoginInput type="text" value={this.state.username} onChange={(e) => this.setState({username: e.target.value})}/>
