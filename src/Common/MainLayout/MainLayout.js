@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { NewArticle, ViewArticle } from "components";
 import { PrivateRoute } from 'common';
-import { Directory, Favourites, Tags, Login } from "routes";
+import { Directory, Favourites, Tags, Login, Signup } from "routes";
 
 
 class Main extends Component {
@@ -20,7 +20,8 @@ class Main extends Component {
           <PrivateRoute path="/favourites" component={Favourites} />
           <PrivateRoute path="/tags" component={Tags} />
           <Route path="/login" component={Login}/>
-          <Redirect from="/" to="/login" />
+          <Route path="/signup" component={Signup}/>
+          {/* <Redirect from="/" to="/login" /> */}
         </Switch>
       </>
     );
