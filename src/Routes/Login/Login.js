@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { LocalStorage } from 'utils';
-import { withRouter } from "react-router";
+import { NavLink, withRouter } from "react-router-dom";
 
 const localStore = LocalStorage();
 
@@ -27,6 +27,10 @@ const LoginForm = styled.form `
     border: none;
     outline: 0;
     cursor: pointer;
+    margin-bottom: 20px;
+    ~ span {
+      font-size: 14px;
+    }
   }
 `;
 
@@ -105,6 +109,7 @@ class Login extends Component {
           <LoginInput type="password" value={this.state.password} onChange={(e) => this.setState({password: e.target.value})}/>
         </LoginInputGroup>
         <button type="submit">Login</button>
+        <span>Don't have an account? <NavLink to="/signup">Sign up</NavLink></span>
       </LoginForm>
     );
   }

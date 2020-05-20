@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { withRouter } from "react-router";
+import { NavLink, withRouter } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
@@ -32,6 +32,11 @@ const LoginForm = styled.form `
     border: none;
     outline: 0;
     cursor: pointer;
+    margin-bottom: 20px;
+    
+    ~ span {
+      font-size: 14px;
+    }
   }
 `;
 
@@ -80,8 +85,9 @@ function SingupForm(props) {
     validationSchema: schema
   });
 
-  const onSubmit = (value) => { 
+  const [validation, setValidation] = React.useState('');
 
+  const onSubmit = (value) => { 
     fetch(`${API_URL}/user/signup`, {
       method: 'POST',
       body: JSON.stringify(value),
@@ -90,6 +96,11 @@ function SingupForm(props) {
       })
     }).then(val => val.json())
     .then(data => {
+      if(data.status === 403){
+        setValidation(data.message)
+        return;
+      }
+      
       window.localStorage.setItem("jwt", data.token)
       props.history.push("directory");
     }).catch(err => {
@@ -100,6 +111,7 @@ function SingupForm(props) {
   return (
     <LoginForm onSubmit={handleSubmit(onSubmit)}>
       <Logo>My Diaries</Logo>
+      {validation && validation}
       <LoginInputGroup>
         <InputLabel>Name</InputLabel>
         <LoginInput 
@@ -128,6 +140,7 @@ function SingupForm(props) {
           {errors.password && <span>{errors.password.message}</span>}
       </LoginInputGroup>
       <button type="submit">Create an account</button>
+      <span>Already signed up? <NavLink to="/login">Login</NavLink></span>
     </LoginForm>
   )
 }
