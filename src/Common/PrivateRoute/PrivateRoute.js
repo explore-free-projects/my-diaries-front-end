@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { SideNavigation, TopNav } from 'common';
 import styled from 'styled-components';
+import { SideNavigation, TopNav } from 'common';
+import { Loading } from "components";
 
 const MainWrapper = styled.main `
   position: absolute;
@@ -28,9 +29,11 @@ const PrivateRoute = ({component:Component, ...rest}) => {
           <SideNavigation/>
           <TopNav/>
           <MainWrapper>
-            <MainWrapperContent>
-              <Component {...props} /> 
-            </MainWrapperContent>
+            <Suspense fallback={<Loading/>}>
+              <MainWrapperContent>
+                <Component {...props} /> 
+              </MainWrapperContent>
+            </Suspense>
           </MainWrapper>
         </>
       : <Redirect to="/login" />

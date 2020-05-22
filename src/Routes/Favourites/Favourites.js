@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { withRouter } from "react-router";
-import { Loading, ArticleList, ModuleSearch } from 'components';
+import { ArticleList, ModuleSearch } from 'components';
 import { EmptyState } from 'common';
 
 function queryValue(queries, keyName) {
@@ -13,7 +13,6 @@ class Favourites extends Component {
     super(props);
     this.state = { 
       data: [],
-      isLoading: true,
       page: 1
     },
 
@@ -32,13 +31,10 @@ class Favourites extends Component {
     fetch(`${API_URL}/api/diaries/favourites/${queryParams}`)
       .then(val => val.json())
       .then(data => {
-        
-        setTimeout(() => {
-          this.setState({
-            data: data,
-            isLoading: false
-          })
-        }, 400)
+        this.setState({
+          data: data,
+          isLoading: false
+        })
       })
       .catch(function(err) {
         this.setState({
@@ -49,7 +45,7 @@ class Favourites extends Component {
   }
 
   render() { 
-    const { data, isLoading } = this.state;
+    const { data } = this.state;
     const query = {
       Key: queryValue(this.props.location.search, "query"),
       Page: queryValue(this.props.location.search, "page")
@@ -66,9 +62,7 @@ class Favourites extends Component {
               pageMeta={data.meta}/>
         }
 
-        { isLoading ? 
-            <Loading/>
-          :
+        { data.diaries &&
           <>
             <DiaryLists
               diaries={data.diaries}
