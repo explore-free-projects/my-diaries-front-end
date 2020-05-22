@@ -13,7 +13,6 @@ class Directory extends Component {
     super(props);
     this.state = { 
       data: [],
-      isLoading: true,
       page: 1
     },
 
@@ -27,26 +26,21 @@ class Directory extends Component {
   fetchDirectoryDetails(e) {
     let queryParams = this.props.location.search;
     
-    this.setState({ isLoading: true})
-
+    
     fetch(`${API_URL}/api/diaries/${queryParams}`)
       .then(val => val.json())
       .then(data => {
         this.setState({
-          data: data,
-          isLoading: false
+          data: data
         })
       })
       .catch(function(err) {
-        this.setState({
-          isLoading: false
-        })
         console.log('Fetch Error :-S', err);
       });
   }
 
   render() { 
-    const { data, isLoading } = this.state;
+    const { data } = this.state;
     const query = {
       Key: queryValue(this.props.location.search, "query"),
       Page: queryValue(this.props.location.search, "page")

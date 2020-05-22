@@ -26,20 +26,14 @@ class Favourites extends Component {
   fetchDirectoryDetails(e) {
     let queryParams = this.props.location.search;
     
-    this.setState({ isLoading: true})
-
     fetch(`${API_URL}/api/diaries/favourites/${queryParams}`)
       .then(val => val.json())
       .then(data => {
         this.setState({
-          data: data,
-          isLoading: false
+          data: data
         })
       })
       .catch(function(err) {
-        this.setState({
-          isLoading: false
-        })
         console.log('Fetch Error :-S', err);
       });
   }
