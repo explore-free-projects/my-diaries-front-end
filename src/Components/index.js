@@ -1,4 +1,4 @@
-import NewArticle from './Newarticle/Newarticle';
+import NewArticle from './NewArticle/NewArticle';
 import TextEditor from './TextEditor/TextEditor';
 import TextEditorPreview from './TextEditor/TextEditorPreview';
 import Loading from './Loading/Loading';
