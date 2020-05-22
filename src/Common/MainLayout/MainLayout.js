@@ -6,7 +6,7 @@ const PrivateRoute = lazy(() => import('common/PrivateRoute/PrivateRoute'));
 const Login = lazy(() => import('routes/Login/Login'));
 const Directory = lazy(() => import('routes/Directory/Directory'));
 const Favourites = lazy(() => import('routes/Favourites/Favourites'));
-const ViewArticle = lazy(() => import('components/ViewArticle/ViewArticle'));
+const ViewArticle = lazy(() => import('components/Viewarticle/Viewarticle'));
 const NewArticle = lazy(() => import('components/NewArticle/NewArticle'));
 
 class Main extends Component {
