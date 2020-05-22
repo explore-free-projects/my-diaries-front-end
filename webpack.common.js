@@ -14,7 +14,13 @@ module.exports = {
     },
     optimization: {
         splitChunks: {
-          chunks: 'all',
+            cacheGroups: {
+				commons: {
+					test: /[\\/]node_modules[\\/]/,
+					name: 'vendors',
+					chunks: 'all'
+				}
+			}
         },
     },
     resolve: {

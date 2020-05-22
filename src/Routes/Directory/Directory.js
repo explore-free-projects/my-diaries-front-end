@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { withRouter } from "react-router";
-import { Loading, ArticleList, ModuleSearch } from 'components';
+import { ArticleList, ModuleSearch } from 'components';
 import { EmptyState } from 'common';
 
 function queryValue(queries, keyName) {
@@ -32,13 +32,10 @@ class Directory extends Component {
     fetch(`${API_URL}/api/diaries/${queryParams}`)
       .then(val => val.json())
       .then(data => {
-        
-        setTimeout(() => {
-          this.setState({
-            data: data,
-            isLoading: false
-          })
-        }, 400)
+        this.setState({
+          data: data,
+          isLoading: false
+        })
       })
       .catch(function(err) {
         this.setState({
@@ -66,9 +63,7 @@ class Directory extends Component {
               pageMeta={data.meta}/>
         }
 
-        { isLoading ? 
-            <Loading/>
-          :
+        { data.diaries && 
           <>
             <DiaryLists
               diaries={data.diaries}
