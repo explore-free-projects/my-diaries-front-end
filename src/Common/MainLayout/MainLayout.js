@@ -1,5 +1,5 @@
 import React, { Component, Suspense, lazy } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { Loading } from "components";
 
 const PrivateRoute = lazy(() => import('common/PrivateRoute/PrivateRoute'));
@@ -25,8 +25,7 @@ class Main extends Component {
             <PrivateRoute path="/directory/:diaryId" component={ViewArticle} />
             <PrivateRoute path="/favourites" component={Favourites} />
             <Route path="/login" component={Login}/>
-            <Route path="/signup" component={Signup}/>
-            {/* <Redirect from="/" to="/login" /> */}
+            <Redirect from="/" to="/login" />
           </Switch>
         </Suspense>
       </>

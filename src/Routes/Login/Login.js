@@ -109,7 +109,6 @@ class Login extends Component {
           <LoginInput type="password" value={this.state.password} onChange={(e) => this.setState({password: e.target.value})}/>
         </LoginInputGroup>
         <button type="submit">Login</button>
-        <span>Don't have an account? <NavLink to="/signup">Sign up</NavLink></span>
       </LoginForm>
     );
   }
