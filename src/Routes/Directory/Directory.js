@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { withRouter } from "react-router";
-import { ArticleList, ModuleSearch } from 'components';
+import { ArticleList, ModuleSearch, Loading } from 'components';
 import { EmptyState } from 'common';
 
 function queryValue(queries, keyName) {
@@ -53,6 +53,7 @@ class Directory extends Component {
     };
     return ( 
       <Fragment>
+        { isLoading && <Loading/>}
         {
           (data.diaries && data.diaries.length > 0 || (query.Key.length > 0)) &&
             <ModuleSearch
