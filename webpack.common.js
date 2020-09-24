@@ -16,13 +16,13 @@ module.exports = {
         runtimeChunk: "single", // enable "runtime" chunk
         splitChunks: {
             cacheGroups: {
-                vendor: {
-                    test: /[\\/]node_modules[\\/]/,
-                    name: "vendor",
-                    chunks: "all"
-                }
-            }
-        }
+				commons: {
+					test: /[\\/]node_modules[\\/]/,
+					name: 'vendors',
+					chunks: 'all'
+				}
+			}
+        },
     },
     resolve: {
         extensions: ['.js', '.jsx'],

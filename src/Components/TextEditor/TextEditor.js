@@ -42,6 +42,8 @@ const EditorTabItem = styled.button `
   position: relative;
   top: 1px;
   cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #6497b1;
 
   &.is-active {
     border-bottom-color: white;

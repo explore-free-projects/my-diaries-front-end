@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { LocalStorage } from 'utils';
-import { withRouter } from "react-router";
+import { NavLink, withRouter } from "react-router-dom";
 
 const localStore = LocalStorage();
 
@@ -27,6 +27,10 @@ const LoginForm = styled.form `
     border: none;
     outline: 0;
     cursor: pointer;
+    margin-bottom: 20px;
+    ~ span {
+      font-size: 14px;
+    }
   }
 `;
 
