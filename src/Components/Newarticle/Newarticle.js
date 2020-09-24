@@ -62,8 +62,7 @@ const ErrorLabel = styled.label `
 
 class NewArticle extends Component {
   constructor(props) {
-    super(props);
-    
+    super(props);    
     this.state = { 
       title: '',
       titleError: '',
@@ -72,7 +71,6 @@ class NewArticle extends Component {
       isLoading: !!(props.match.params.diaryId) ? true : false,
       diaryId: !!(props.match.params.diaryId) ? props.match.params.diaryId : ''
     }
-
     this.handleSubmit = this.handleSubmit.bind(this);
     this.goToDirectory = this.goToDirectory.bind(this)
   }

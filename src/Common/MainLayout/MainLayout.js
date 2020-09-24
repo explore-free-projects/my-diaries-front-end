@@ -4,11 +4,10 @@ import { Loading } from "components";
 
 const PrivateRoute = lazy(() => import('common/PrivateRoute/PrivateRoute'));
 const Login = lazy(() => import('routes/Login/Login'));
-const Signup = lazy(() => import('routes/Signup/Signup'));
 const Directory = lazy(() => import('routes/Directory/Directory'));
 const Favourites = lazy(() => import('routes/Favourites/Favourites'));
 const ViewArticle = lazy(() => import('components/ViewArticle/ViewArticle'));
-const NewArticle = lazy(() => import('components/NewArticle/NewArticle'));
+const NewArticle = lazy(() => import('components/Newarticle/Newarticle'));
 
 class Main extends Component {
   constructor(props) {

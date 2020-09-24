@@ -4,7 +4,7 @@ const webpack = require('webpack');
 
 module.exports = merge(common, {
   mode: 'production',
-
+  devtool: '',
   plugins: [
     new webpack.DefinePlugin({
       API_URL: JSON.stringify("https://demo-rest-api-nodejs.herokuapp.com")

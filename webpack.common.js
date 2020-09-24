@@ -13,15 +13,16 @@ module.exports = {
       historyApiFallback: true
     },
     optimization: {
+        runtimeChunk: "single", // enable "runtime" chunk
         splitChunks: {
             cacheGroups: {
-				commons: {
-					test: /[\\/]node_modules[\\/]/,
-					name: 'vendors',
-					chunks: 'all'
-				}
-			}
-        },
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: "vendor",
+                    chunks: "all"
+                }
+            }
+        }
     },
     resolve: {
         extensions: ['.js', '.jsx'],
