@@ -47,7 +47,7 @@ class Directory extends Component {
   }
 
   render() { 
-    const { data } = this.state;
+    const { data, isLoading } = this.state;
     const query = {
       Key: queryValue(this.props.location.search, "query"),
       Page: queryValue(this.props.location.search, "page")
